@@ -1872,6 +1872,7 @@ class AbstractDevice:
         self.stop_callback = None
 
     def set_master_volume(self, volume: float) -> None:
+        """Set the master volume of the device. Volume should be between 0.0 and 1.0."""
         if volume < 0.0 or volume > 1.0:
             raise MiniaudioError("volume must be between 0.0 and 1.0", volume)
 
@@ -1884,6 +1885,7 @@ class AbstractDevice:
             raise MiniaudioError("failed to set master volume", result)
     
     def get_master_volume(self) -> float:
+        """Get the master volume of the device. Returns a value between 0.0 and 1.0."""
         if self._device is None:
             raise MiniaudioError("device is closed")
 
